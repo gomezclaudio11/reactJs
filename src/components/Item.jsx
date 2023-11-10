@@ -1,6 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
+import { Link } from 'react-router-dom';
+
 
 const Item = (  { product, onItemClick } ) => {
     
@@ -15,7 +17,7 @@ const Item = (  { product, onItemClick } ) => {
             <Card.Text>Precio : $ {product.price}</Card.Text>
           </Card.Body>
           <Card.Footer className="bg-secondary">
-            <Button variant="secondary" onClick={() => onItemClick(product)} >Ver mas</Button>
+            <Button variant="secondary" onClick={() => onItemClick(product)} ><Link to = {`/itemDetailContainer`}> Ver mas </Link></Button>
           </Card.Footer>
         </Card>
       </CardGroup>

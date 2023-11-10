@@ -34,6 +34,7 @@ const ItemList = ( )=> {
     const handleItemClick = (product) => {
         //Aqui se manejaria la logica para mostrar detalles
         console.log("producto seleccionado", product);
+      
     };
 
     if (loading){
