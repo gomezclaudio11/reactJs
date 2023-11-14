@@ -1,7 +1,6 @@
 
 import './App.css';
 import ClickCounter from './components/ClickCounter';
-import ItemCount from './components/ItemCount';
 import { ItemListContainer } from './components/ItemListContainer';
 import Navbar from './components/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +17,6 @@ function App() {
       <Routes>
         <Route exact path="/" element = {<ItemListContainer/>} />
         <Route exact path="/clickCounter" element = {<ClickCounter/>} />
-        <Route exact path="/itemCount" element = { <ItemCount stock = "10"/>} />
         <Route exact path="/itemDetailContainer" element = {<ItemDetailContainer/>} />
         <Route exact path="/pokemonList" element = {<PokemonList/>} />
         <Route exact path="/users" element = {<RutasDinamicas2/>} />

@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsPip, BsTag, BsTruck } from "react-icons/bs";
 import ListGroup from 'react-bootstrap/ListGroup';
+import ItemCount from "./ItemCount";
 
 
 const ItemDetail = ( { item } ) => {
@@ -16,6 +17,7 @@ const ItemDetail = ( { item } ) => {
             <ListGroup.Item as="li" variant="dark"><strong>{item.name}</strong></ListGroup.Item>
             <ListGroup.Item as="li">{item.description}</ListGroup.Item>
             <ListGroup.Item as="li"> Precio: $ {item.price}</ListGroup.Item>
+            <ListGroup.Item as="li"> <ItemCount stock = "5" /> </ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>
