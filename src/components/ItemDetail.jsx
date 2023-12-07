@@ -1,23 +1,58 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import ItemCount from "./ItemCount";
+import ListGroup from 'react-bootstrap/ListGroup';
+import { CartContext } from "../context/CartContext"
+import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BsPip, BsTag, BsTruck } from "react-icons/bs";
-import ListGroup from 'react-bootstrap/ListGroup';
-import ItemCount from "./ItemCount";
+import { useNavigate } from "react-router-dom";
 
 
 const ItemDetail = ( { item } ) => {
+  const { addToCart } = useContext (CartContext)
+  
+  const navigate = useNavigate();
+  const [contador, setContador] = useState(0)
+  console.log({item})
+  
+  const onAdd = (quantityToAdd) =>{
+    console.log(`agregaste items al carrito: `, quantityToAdd);
+    setContador (quantityToAdd)
+    addToCart (item, quantityToAdd)
+    navigate ("/cart")
+  }
+  useEffect (() =>{
+    console.log ({ contador })
+  }, [contador])
+
  return (
     <div >
     <Container>
       <Row className="justify-content-md-center">
+      <Col>
+          <Figure>
+            <Figure.Image
+              width={250}
+              height={240}
+              alt="250x240"
+              src= {item.img} 
+              />
+            </Figure>
+        </Col>
         <Col>
           <ListGroup as="ul">
-            <ListGroup.Item as="li" variant="dark"><strong>{item.name}</strong></ListGroup.Item>
+            <ListGroup.Item as="li" variant="dark">
+            <strong>
+            {item.name}
+            </strong>
+            </ListGroup.Item>
             <ListGroup.Item as="li">{item.description}</ListGroup.Item>
             <ListGroup.Item as="li"> Precio: $ {item.price}</ListGroup.Item>
-            <ListGroup.Item as="li"> <ItemCount stock = "5" /> </ListGroup.Item>
+            <ListGroup.Item as="li">{item.subtitle}</ListGroup.Item>
+            <ListGroup.Item as="li">Medidas: {item.size}</ListGroup.Item>
+            <ListGroup.Item as="li"><ItemCount initial= "1" stock={item.stock} onAdd={onAdd}/></ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>

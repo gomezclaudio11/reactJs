@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const ItemCount = ( {stock}) => {
+const ItemCount = ( { initial, stock, onAdd}) => {
     const [contador, setContador] = useState(0)
     const sumar = () => {
         if(contador < stock) {
@@ -30,7 +30,7 @@ const ItemCount = ( {stock}) => {
     </Col>
     <br/>
     <Col>
-    <Button variant="success" >Agregar al carrito</Button>
+    <Button variant="success" onClick={()=>onAdd(contador)}>Agregar al carrito</Button>
     </Col>
     </Row>
     </Container>
